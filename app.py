@@ -14,9 +14,10 @@ app.secret_key = 'aoigKYKRfjofiNAJIANFapbFOAnjGASHFb;b;xz'
 api = Api(app)
 jwt = JWT(app, authenticate, identity)
 
+db.init_app(app)
+
 @app.before_first_request
 def create_tables():
-    db.init_app(app)
     db.create_all()
 
 
